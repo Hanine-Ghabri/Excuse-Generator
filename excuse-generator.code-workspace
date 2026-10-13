@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../magic-8-ball"
+		},
+		{
+			"path": "../memory-match"
+		},
+		{
+			"path": "../mini-adventure"
+		},
+		{
+			"path": "../number-guessing-game"
+		},
+		{
+			"path": "../palette-generator"
+		},
+		{
+			"path": "../password-generator"
+		},
+		{
+			"path": "../pixel-art-maker"
+		},
+		{
+			"path": "../pomodoro-timer"
+		},
+		{
+			"path": "../snake-game"
+		},
+		{
+			"path": "../typing-speed-test"
+		}
+	]
+}

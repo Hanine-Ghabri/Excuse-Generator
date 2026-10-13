@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Excuse Generator</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#2a1f3d;color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:16px}
+#excuse{max-width:640px;font-size:1.5rem;line-height:1.5;background:#fff1;border-radius:16px;padding:24px;min-height:4em;display:flex;align-items:center;justify-content:center}
+button{background:#ffd23f;border:0;border-radius:8px;padding:12px 22px;font-size:1.05rem;cursor:pointer;margin:4px}
+button.alt{background:#fff3;color:#fff}
+ul{list-style:none;padding:0;max-width:640px;color:#c9b8e8;font-size:.95rem}
+</style></head><body>
+<h1>🙈 Excuse Generator</h1>
+<p>For when you are late, did not do the homework, or forgot to reply.</p>
+<div id="excuse">Click the button!</div>
+<div><button id="gen">Give me an excuse</button><button class="alt" id="copy">Copy</button></div>
+<ul id="history"></ul>
+<script>
+const start = ["I would have, but", "Sorry, but", "You will not believe this, but", "Honestly,", "Funny story:", "Long story short,"];
+const who = ["my cat", "a very confused pigeon", "my neighbour's drone", "the Wi-Fi", "my alarm clock", "a suspicious seagull", "my laptop", "a rogue vending machine", "my houseplant"];
+const did = ["deleted", "hid", "tried to negotiate with", "stood on", "became emotionally attached to", "accidentally mailed", "held hostage", "ate"];
+const what = ["my homework", "my keys", "the only charger", "my to-do list", "my morning", "the bus schedule", "my motivation", "the instructions"];
+const end = ["and I am still recovering.", "and I have the screenshots.", "which is why I am late.", "so I needed a moment.", "and nobody warned me.", "and honestly, it was a lot."];
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const out = document.getElementById("excuse"), hist = document.getElementById("history");
+function gen() {
+  const text = `${pick(start)} ${pick(who)} ${pick(did)} ${pick(what)} ${pick(end)}`;
+  if (out.textContent && out.textContent !== "Click the button!") {
+    const li = document.createElement("li"); li.textContent = "• " + out.textContent; hist.prepend(li);
+    while (hist.children.length > 5) hist.lastChild.remove();
+  }
+  out.textContent = text;
+}
+document.getElementById("gen").onclick = gen;
+document.getElementById("copy").onclick = () => { try { navigator.clipboard.writeText(out.textContent); } catch (e) {} };
+</script></body></html>
